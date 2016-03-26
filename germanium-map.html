@@ -41,7 +41,7 @@ Example:
             }
 
             leaflet-map {
-/*                width: 400px;*/
+                /*                width: 400px;*/
                 /*width: 100%;*/
                 /*height: 100px;*/
                 /*height: 100%;*/   
@@ -49,12 +49,12 @@ Example:
             }
         </style>
         <content>
-            
+
         </content>
         <leaflet-map fit-to-markers 
                      style$="width: {{width}}; height: {{height}}"
                      latitude="{{latitude}}" longitude="{{longitude}}" zoom="{{zoom}}" max-zoom="{{maxZoom}}">
-            <template is="dom-repeat" items="[[assets]]" as="asset">
+                     <template is="dom-repeat" items="[[assets]]" as="asset">
                 <leaflet-marker 
                     longitude="[[asset.properties.longitude]]" 
                     latitude="[[asset.properties.latitude]]" 
@@ -70,42 +70,42 @@ Example:
             is: 'germanium-map',
             properties: {
                 /**
-                 * `assets` List of markered assets. All object in the array is a GeoJSON feature object.
+                 * `maxZoom` Tile layer maximal outdoor zoom level.
                  */
                 maxZoom: {
                     type: Number,
                     notify: true
                 },
                 /**
-                 * `assets` List of markered assets. All object in the array is a GeoJSON feature object.
+                 * `zoom` Current zoom level.
                  */
                 zoom: {
                     type: Number,
                     notify: true
                 },
                 /**
-                 * `assets` List of markered assets. All object in the array is a GeoJSON feature object.
+                 * `longitude` Longitude of centered position.
                  */
                 longitude: {
                     type: Number,
                     notify: true
                 },
                 /**
-                 * `assets` List of markered assets. All object in the array is a GeoJSON feature object.
+                 * `longitude` Latitude of centered position.
                  */
                 latitude: {
                     type: Number,
                     notify: true
                 },
                 /**
-                 * `assets` List of markered assets. All object in the array is a GeoJSON feature object.
+                 * `with` With attribute of the map. Controlling viewport width. The value is similar the HTML5 CSS with attribute.
                  */
                 width: {
                     type: String,
                     notify: true
                 },
                 /**
-                 * `assets` List of markered assets. All object in the array is a GeoJSON feature object.
+                 * `with` Height attribute of the map. Controlling viewport height. The value is similar the HTML5 CSS height attribute.
                  */
                 height: {
                     type: String,
@@ -118,31 +118,7 @@ Example:
                     type: Array,
                     notify: true,
                     value: []
-                },
-                /**
-                 * Describes the author of the element, but is really just an excuse to
-                 * show off JSDoc annotations.
-                 *
-                 * @type {{name: string, image: string}}
-                 */
-                author: {
-                    type: Object,
-                    // Use `value` to provide a default value for a property, by setting it
-                    // on your element's prototype.
-                    //
-                    // If you provide a function, as we do here, Polymer will call that
-                    // _per element instance_.
-                    //
-                    // We do that to ensure that each element gets its own copy of the
-                    // value, rather than having it shared across all instances (via the
-                    // prototype).
-                    value: function () {
-                        return {
-                            name: 'Dimitri Glazkov',
-                            image: 'http://addyosmani.com/blog/wp-content/uploads/2013/04/unicorn.jpg',
-                        };
-                    }
-                },
+                }
             },
             // Element Lifecycle
 
@@ -173,32 +149,6 @@ Example:
             },
             // Element Behavior
 
-            /**
-             * Sometimes it's just nice to say hi.
-             *
-             * @param {string} greeting A positive greeting.
-             * @return {string} The full greeting.
-             */
-            sayHello: function (greeting) {
-                var response = greeting || 'Hello World!';
-                return 'germanium-map says, ' + response;
-            },
-            /**
-             * The `germanium-map-lasers` event is fired whenever `fireLasers` is called.
-             *
-             * @event germanium-map-lasers
-             * @detail {{sound: String}}
-             */
-
-            /**
-             * Attempt to destroy this element's enemies with a beam of light!
-             *
-             * Or, at least, dispatch an event in the vain hope that someone else will
-             * do the zapping.
-             */
-            fireLasers: function () {
-                this.fire('germanium-map-lasers', {sound: 'Pew pew!'});
-            }
         });
     </script>
 </dom-module>
