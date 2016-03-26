@@ -1,8 +1,8 @@
 {
-  "name": "seed-element",
-  "version": "1.0.7",
+  "name": "germanium-map",
+  "version": "1.0.0",
   "authors": [
-    "Anonymous <anonymous@example.com>"
+    "lordoftheflies <laszlo.hegeds@ge.com>"
   ],
   "description": "An element providing a solution to no problem in particular.",
   "keywords": [
@@ -10,9 +10,9 @@
     "polymer",
     "seed"
   ],
-  "main": "seed-element.html",
+  "main": "germanium-map.html",
   "license": "http://polymer.github.io/LICENSE.txt",
-  "homepage": "https://github.com/<USERNAME>/seed-element/",
+  "homepage": "https://github.build.ge.com/212429780/germanium-map/",
   "ignore": [
     "/.*",
     "/test/"
