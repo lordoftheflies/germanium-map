@@ -9,40 +9,67 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-    <title>germanium-map Demo</title>
-    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
-    <link rel="import" href="../germanium-map.html">
-  </head>
-  <body unresolved>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+        <title>germanium-map Demo</title>
+        <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="import" href="../../iron-ajax/iron-ajax.html">
+        <link rel="import" href="../germanium-map.html">
+    </head>
+    <body unresolved>
 
-    <p>An example of <code>&lt;germanium-map&gt;</code>:</p>
+        <p>An example of <code>&lt;germanium-map&gt;</code>:</p>
+        <template is="dom-bind">
+            <style>
+                body {
+                    display: block;
+                    box-sizing: border-box;
+                    margin: 0;
+                    height: 100%;
+                    /*@apply(--layout-horizontal);*/
+                }
+            </style>
 
-    <p>Make words! <button id="saybtn">Say Something</button></p>
-    <p>Make lasers! <button id="laserbtn">Fire lasers</button></p>
 
-    <germanium-map author='{"name": "Lord Meowser", "image": "http://lorempixel.com/g/300/200/cats/"}' fancy>
-      <h2>Hello germanium-map</h2>
-    </germanium-map>
+            <iron-ajax
+                url="./data/asset-markers.json"
+                handle-as="json"
+                last-response="{{assets}}"
+                auto verbose>
 
-    <script>
-      var seedElement = document.querySelector('germanium-map');
+            </iron-ajax>
 
-      document.querySelector('#saybtn').addEventListener('click', function() {
-        alert(seedElement.sayHello('Hallo!'));
-      });
+            <div>
 
-      document.querySelector('#laserbtn').addEventListener('click', function() {
-        seedElement.fireLasers();
-      });
+                Zoom: {{zoom}}
+                <ul>Assets:</ul>
+                <template is="dom-repeat" items="[[assets]]" as="asset">
+                    <li>[[asset.properties.name]]</li>
+                </template>
+            </div>
 
-      document.addEventListener("germanium-map-lasers", function(e) {
-        console.log(e.detail.sound);
-      });
+            <germanium-map zoom="{{zoom}}" max-zoom="16" assets="{{assets}}" height="500px">
+                <leaflet-icon id="myicon" 
+                              icon-url="https://stendhalgame.org/images/mapmarker/me.png"></leaflet-icon>
+            </germanium-map>
+        </template>
+        <script>
+var seedElement = document.querySelector('germanium-map');
 
-    </script>
+//      document.querySelector('#saybtn').addEventListener('click', function() {
+//        alert(seedElement.sayHello('Hallo!'));
+//      });
+//
+//      document.querySelector('#laserbtn').addEventListener('click', function() {
+//        seedElement.fireLasers();
+//      });
+//
+//      document.addEventListener("germanium-map-lasers", function(e) {
+//        console.log(e.detail.sound);
+//      });
 
-  </body>
+        </script>
+
+    </body>
 </html>

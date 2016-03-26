@@ -1,0 +1,38 @@
+[
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                77.2,
+                28.4
+            ]
+        },
+        "properties": {
+            "asset": "/asset/smart-luminaire-0",
+            "longitude": 77.2,
+            "latitude": 28.4,
+            "name": "Smart-luminaire #0",
+            "href": "/asset/smart-luminaire-0",
+            "icon": "myicon"
+        }
+    },
+    {
+        "type": "Feature",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                77.2,
+                28.5
+            ]
+        },
+        "properties": {
+            "asset": "/asset/smart-luminaire-1",
+            "longitude": 77.2,
+            "latitude": 28.5,
+            "name": "Smart-luminaire #1",
+            "href": "https://www.google.com",
+            "icon": "myicon"
+        }
+    }
+]
